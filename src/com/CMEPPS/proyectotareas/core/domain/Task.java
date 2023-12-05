@@ -6,15 +6,15 @@ public class Task {
 	private String descripcion;
 	private float tiempoEstimado;
 	private int prioridad;
-	private User user;
+	private Long idUser;
 	
-	public Task(Long id, String nombre, String descripcion, float tiempoEstimado, int prioridad, User user) {
+	public Task(Long id, String nombre, String descripcion, float tiempoEstimado, int prioridad, Long idUser) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.tiempoEstimado = tiempoEstimado;
 		this.prioridad = prioridad;
-		this.user = user;
+		this.idUser = idUser;
 	}
 
 	public Long getId() {
@@ -57,12 +57,12 @@ public class Task {
 		this.prioridad = prioridad;
 	}
 
-	public User getUser() {
-		return user;
+	public Long getUser() {
+		return idUser;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(Long idUser) {
+		this.idUser = idUser;
 	}
 	
 	

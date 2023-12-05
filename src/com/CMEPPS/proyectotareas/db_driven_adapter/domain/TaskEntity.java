@@ -23,10 +23,10 @@ public class TaskEntity {
 	private float tiempoEstimado;
 	@Column(name = "prioridad")
 	private int prioridad;
-	@Column(name = "user")
-	private User user;
+	@Column(name = "idUser")
+	private Long idUser;
 	
 	public Task toTask(){
-		return new Task(this.id, this.nombre, this.descripcion, this.tiempoEstimado, this.prioridad, this.user);   
+		return new Task(this.id, this.nombre, this.descripcion, this.tiempoEstimado, this.prioridad, this.idUser);   
 	}
 }

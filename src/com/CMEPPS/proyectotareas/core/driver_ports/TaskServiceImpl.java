@@ -1,5 +1,7 @@
 package com.CMEPPS.proyectotareas.core.driver_ports;
 
+import java.util.List;
+
 import com.CMEPPS.proyectotareas.core.domain.Task;
 import com.CMEPPS.proyectotareas.core.driven_ports.TaskRepository;
 
@@ -17,4 +19,20 @@ public class TaskServiceImpl implements TaskService{
 		return taskRepository.findById(id);
 	}
 
+	@Override
+	public Long guardarTarea(String nombre, String descripcion, float tiempoEstimado, int prioridad, Long idUser) {
+		Long idTask = taskRepository.obtenerSiguienteCodigo();
+		
+		Task task = new Task(idTask, nombre, descripcion, tiempoEstimado, prioridad, idUser);
+		
+		this.taskRepository.guardar(task);
+		
+		return idTask;
+	}
+
+	private List<Task> listarTareas() {
+        List<Task> todasTareas = this.taskRepository.obtenerTodas();
+        return todasTareas;
+    }
+	
 }

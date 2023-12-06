@@ -26,6 +26,17 @@ public class TaskEntity {
 	@Column(name = "idUser")
 	private Long idUser;
 	
+	
+	public TaskEntity(Task task) {
+		super();
+		this.id = task.getId();
+		this.nombre = task.getNombre();
+		this.descripcion = task.getDescripcion();
+		this.tiempoEstimado = task.getTiempoEstimado();
+		this.prioridad = task.getPrioridad();
+		this.idUser = task.getUser();
+	}
+
 	public Task toTask(){
 		return new Task(this.id, this.nombre, this.descripcion, this.tiempoEstimado, this.prioridad, this.idUser);   
 	}

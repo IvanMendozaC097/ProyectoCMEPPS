@@ -1667,3 +1667,11 @@ INSERT INTO TASK_ENTITY VALUES (1,TRUE,'prueba1','descripcion',1,'nombre',1,2) [
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "TASK_ENTITY[*] TASK_ENTITY"; se esperaba "TRUNCATE"
 Syntax error in SQL statement "TASK_ENTITY[*] TASK_ENTITY"; expected "TRUNCATE"; SQL statement:
 TASK_ENTITY TASK_ENTITY [42001-199]
+2023-12-07 17:44:11 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Conversión de datos fallida, convirtiendo "'' (TASK_ENTITY: ""TIEMPO_ESTIMADO"" FLOAT)"
+Data conversion error converting "'' (TASK_ENTITY: ""TIEMPO_ESTIMADO"" FLOAT)"; SQL statement:
+INSERT INTO "PUBLIC"."TASK_ENTITY"("ID","COMPLETADA","DESCRIPCION","ID_USER","NOMBRE","PRIORIDAD","TIEMPO_ESTIMADO")VALUES(?,?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6, ?7) [22018-199]
+2023-12-07 17:44:11 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Conversión de datos fallida, convirtiendo "'' (TASK_ENTITY: ""TIEMPO_ESTIMADO"" FLOAT)"
+Data conversion error converting "'' (TASK_ENTITY: ""TIEMPO_ESTIMADO"" FLOAT)"; SQL statement:
+INSERT INTO "PUBLIC"."TASK_ENTITY"("ID","COMPLETADA","DESCRIPCION","ID_USER","NOMBRE","PRIORIDAD","TIEMPO_ESTIMADO")VALUES(?,?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6, ?7) [22018-199]

@@ -36,6 +36,14 @@ public class JpaTaskRepository implements TaskRepository{
 	}
 
 	@Override
+    public List<Task> obtenerCompletadas() {
+        List<TaskEntity> completadasEntities = haaJpaRepository.findByCompletada();
+        return completadasEntities.stream()
+                .map(TaskEntity::toTask)
+                .collect(Collectors.toList());
+    }
+	
+	@Override
 	public Long obtenerSiguienteCodigo() {
 	    Long maxId = haaJpaRepository.getMaxId(); 
 	    return maxId != null ? maxId + 1 : 1L; // Si no hay registros, devuelve 1 como el primer código

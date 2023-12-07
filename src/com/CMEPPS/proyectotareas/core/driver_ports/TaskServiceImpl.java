@@ -20,10 +20,10 @@ public class TaskServiceImpl implements TaskService{
 	}
 
 	@Override
-	public Long guardarTarea(String nombre, String descripcion, float tiempoEstimado, int prioridad, Long idUser) {
+	public Long guardarTarea(String nombre, String descripcion, float tiempoEstimado, int prioridad, Long idUser, boolean completada) {
 		Long idTask = taskRepository.obtenerSiguienteCodigo();
 		
-		Task task = new Task(idTask, nombre, descripcion, tiempoEstimado, prioridad, idUser);
+		Task task = new Task(idTask, nombre, descripcion, tiempoEstimado, prioridad, idUser, completada);
 		
 		this.taskRepository.guardar(task);
 		
@@ -34,5 +34,10 @@ public class TaskServiceImpl implements TaskService{
         List<Task> todasTareas = this.taskRepository.obtenerTodas();
         return todasTareas;
     }
+	
+	private List<Task> listarCompletadas(){
+		List<Task> tareasCompletadas = this.taskRepository.obtenerCompletadas();
+		return tareasCompletadas;
+	}
 	
 }

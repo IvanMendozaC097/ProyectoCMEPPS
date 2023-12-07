@@ -16,4 +16,7 @@ public interface HAAJpaRepository extends JpaRepository<TaskEntity, Long> {
 	@Query("SELECT t FROM TaskEntity t WHERE t.completada = true")
     List<TaskEntity> findByCompletada();
 	
+	@Query("SELECT t FROM TaskEntity t WHERE t.idUser = idUser")
+    List<TaskEntity> findByUser(Long idUser);
+	
 }

@@ -28,8 +28,8 @@ public class JpaTaskRepository implements TaskRepository{
 	}
 
 	@Override
-	public List<Task> obtenerTodas() {
-	    List<TaskEntity> taskEntities = haaJpaRepository.findAll();
+	public List<Task> obtenerTodas(Long idUser) {
+	    List<TaskEntity> taskEntities = haaJpaRepository.findByUser(idUser);
 	    return taskEntities.stream()
 	            .map(TaskEntity::toTask)
 	            .collect(Collectors.toList());

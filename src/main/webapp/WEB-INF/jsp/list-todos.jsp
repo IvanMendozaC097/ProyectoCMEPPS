@@ -14,23 +14,29 @@
    <table class="table table-striped">
     <thead>
      <tr>
-      <th width="40%">Descripción</th>
-      <th width="40%">Fecha objetivo</th>
+     <th width="20%">Nombre</th>
+     <th width="20%">Descripción</th>
+     <th width="20%">Nombre</th>
+     <th width="20%">Descripción</th>
+     <th width="20%">Nombre</th>
+      
       <th width="20%"></th>
      </tr>
     </thead>
     <tbody>
-     <c:forEach items="${todos}" var="todo">
-      <tr>
-       <td>${todo.description}</td>
-       <td><fmt:formatDate value="${todo.targetDate}"
-         pattern="dd/MM/yyyy" /></td>
-       <td><a type="button" class="btn btn-success"
-        href="/update-todo?id=${todo.id}">Editar</a>
-       <a type="button" class="btn btn-warning"
-        href="/delete-todo?id=${todo.id}">Borrar</a></td>
-      </tr>
-     </c:forEach>
+     <c:forEach items="${tasks}" var="task">
+        <tr>
+            <td>${task.nombre}</td>
+            <td>${task.descripcion}</td>
+            <td>${task.tiempoEstimado}</td>
+            <td>${task.prioridad}</td>
+            <td>${task.completada}</td>
+            <td>
+                <a type="button" class="btn btn-success" href="/update-todo?id=${task.id}">Editar</a>
+                <a type="button" class="btn btn-warning" href="/delete-todo?id=${task.id}">Borrar</a>
+            </td>
+        </tr>
+    </c:forEach>
     </tbody>
    </table>
   </div>

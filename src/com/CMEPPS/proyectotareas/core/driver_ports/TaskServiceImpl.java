@@ -30,8 +30,9 @@ public class TaskServiceImpl implements TaskService{
 		return idTask;
 	}
 
-	private List<Task> listarTareas() {
-        List<Task> todasTareas = this.taskRepository.obtenerTodas();
+	@Override
+	public List<Task> listarTareas(Long idUser) {
+        List<Task> todasTareas = this.taskRepository.obtenerTodas(idUser);
         return todasTareas;
     }
 	

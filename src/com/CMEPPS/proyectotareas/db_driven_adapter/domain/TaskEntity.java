@@ -38,6 +38,8 @@ public class TaskEntity {
 		this.idUser = task.getUser();
 		this.completada = task.getCompletada();
 	}
+	
+	public TaskEntity() {}
 
 	public Task toTask(){
 		return new Task(this.id, this.nombre, this.descripcion, this.tiempoEstimado, this.prioridad, this.idUser, this.completada);   

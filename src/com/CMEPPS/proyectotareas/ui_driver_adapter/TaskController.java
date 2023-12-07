@@ -20,7 +20,7 @@ public class TaskController {
         try {
             return ResponseEntity.ok(taskService.getTask(id));
         } catch (TaskDoesNotExistException e){
-            return ResponseEntity.ok("We don't have this book!");
+            return ResponseEntity.ok("This task doesn´t exist!");
         } catch (Exception e){
             return ResponseEntity.badRequest().build();
         }

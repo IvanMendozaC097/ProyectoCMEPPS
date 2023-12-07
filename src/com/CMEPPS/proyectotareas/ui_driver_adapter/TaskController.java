@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,15 +19,16 @@ import com.CMEPPS.proyectotareas.core.driver_ports.TaskService;
 public class TaskController {
     @Autowired
     private TaskService taskService;
-    @GetMapping("/tasks")
-    public ResponseEntity getTask(@RequestParam Long id) {
-        try {
-            return ResponseEntity.ok(taskService.getTask(id));
-        } catch (TaskDoesNotExistException e){
-            return ResponseEntity.ok("This task doesn´t exist!");
-        } catch (Exception e){
-            return ResponseEntity.badRequest().build();
-        }
+    
+    
+    @GetMapping("/addTarea")
+    public String showFormAddTaskPage(ModelMap model) {
+        return "add-task";
+    }
+    
+    @GetMapping("/")
+    public String showWelcomePage(ModelMap model) {
+        return "welcome";
     }
     
     @GetMapping("/list-todos")
@@ -36,6 +38,18 @@ public class TaskController {
         model.put("tasks", tasks);
         return "list-todos";
     }
+    
+    @PostMapping("/add-task")
+    public String agregarTarea(@RequestParam String descripcion, @RequestParam String nombre, @RequestParam float tiempoEstimado, @RequestParam int prioridad) {
+        // Puedes agregar otros parámetros según tus necesidades
+
+        // Guarda la tarea en la base de datos
+        taskService.guardarTarea(nombre, descripcion, tiempoEstimado, prioridad, 1L, false);
+
+        // Redirige a la página de lista de tareas u otra página según tus necesidades
+        return "redirect:/list-todos";
+    }
+
     
    
 }

@@ -3,7 +3,7 @@
 
 <div class="container">
  <div>
-  <a type="button" class="btn btn-primary btn-md" href="/add-todo">Añadir tarea</a>
+  <a type="button" class="btn btn-primary btn-md" href="/addTarea">Añadir tarea</a>
  </div>
  <br>
  <div class="panel panel-primary">
@@ -15,23 +15,20 @@
     <thead>
      <tr>
      <th width="20%">Nombre</th>
-     <th width="20%">Descripción</th>
-     <th width="20%">Nombre</th>
-     <th width="20%">Descripción</th>
-     <th width="20%">Nombre</th>
-      
-      <th width="20%"></th>
+     <th width="30%">Descripción</th>
+     <th width="10%">Tiempo Estimado</th>
+     <th width="10%">Prioridad</th>      
+      <th width="30%"></th>
      </tr>
     </thead>
     <tbody>
      <c:forEach items="${tasks}" var="task">
         <tr>
-            <td>${task.nombre}</td>
-            <td>${task.descripcion}</td>
-            <td>${task.tiempoEstimado}</td>
-            <td>${task.prioridad}</td>
-            <td>${task.completada}</td>
-            <td>
+            <td width="20%">${task.nombre}</td>
+            <td width="30%">${task.descripcion}</td>
+            <td width="10%">${task.tiempoEstimado}</td>
+            <td width="10%">${task.prioridad}</td>
+            <td width="30%">
                 <a type="button" class="btn btn-success" href="/update-todo?id=${task.id}">Editar</a>
                 <a type="button" class="btn btn-warning" href="/delete-todo?id=${task.id}">Borrar</a>
             </td>

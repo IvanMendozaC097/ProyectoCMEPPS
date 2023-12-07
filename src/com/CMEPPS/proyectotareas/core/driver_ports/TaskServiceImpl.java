@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.CMEPPS.proyectotareas.core.domain.Task;
 import com.CMEPPS.proyectotareas.core.driven_ports.TaskRepository;
+import com.CMEPPS.proyectotareas.db_driven_adapter.domain.TaskEntity;
 
 public class TaskServiceImpl implements TaskService{
 

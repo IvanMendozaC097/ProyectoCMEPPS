@@ -7,16 +7,27 @@ public class Task {
 	private float tiempoEstimado;
 	private int prioridad;
 	private Long idUser;
+	private boolean completada;
 	
-	public Task(Long id, String nombre, String descripcion, float tiempoEstimado, int prioridad, Long idUser) {
+	
+	public Task(Long id, String nombre, String descripcion, float tiempoEstimado, int prioridad, Long idUser, boolean completada) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.tiempoEstimado = tiempoEstimado;
 		this.prioridad = prioridad;
 		this.idUser = idUser;
+		this.completada = completada;
 	}
 
+	public boolean getCompletada() {
+		return completada;
+	}
+	
+	public void setCompletada(boolean completada) {
+		this.completada = completada;
+	}
+	
 	public Long getId() {
 		return id;
 	}

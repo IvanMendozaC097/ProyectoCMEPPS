@@ -36,8 +36,8 @@ public class JpaTaskRepository implements TaskRepository{
 	}
 
 	@Override
-    public List<Task> obtenerCompletadas() {
-        List<TaskEntity> completadasEntities = haaJpaRepository.findByCompletada();
+    public List<Task> obtenerCompletadas(Long idUser) {
+        List<TaskEntity> completadasEntities = haaJpaRepository.findByCompletada(idUser);
         return completadasEntities.stream()
                 .map(TaskEntity::toTask)
                 .collect(Collectors.toList());

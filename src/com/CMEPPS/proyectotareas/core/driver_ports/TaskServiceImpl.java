@@ -37,8 +37,8 @@ public class TaskServiceImpl implements TaskService{
         return todasTareas;
     }
 	
-	private List<Task> listarCompletadas(){
-		List<Task> tareasCompletadas = this.taskRepository.obtenerCompletadas();
+	public List<Task> listarCompletadas(Long idUser){
+		List<Task> tareasCompletadas = this.taskRepository.obtenerCompletadas(idUser);
 		return tareasCompletadas;
 	}
 	

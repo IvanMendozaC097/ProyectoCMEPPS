@@ -39,6 +39,15 @@ public class TaskController {
         return "list-todos";
     }
     
+    @GetMapping("/list-completadas")
+    public String showCompletadas(ModelMap model) {
+    	Long idUser = (long) 1;  // Ajusta esto según tus necesidades
+        List<Task> tasks = taskService.listarCompletadas(idUser);
+        model.put("tasks", tasks);
+        return "list-completadas";
+    }
+    
+    
     @PostMapping("/add-task")
     public String agregarTarea(@RequestParam String descripcion, @RequestParam String nombre, @RequestParam float tiempoEstimado, @RequestParam int prioridad) {
         // Puedes agregar otros parámetros según tus necesidades

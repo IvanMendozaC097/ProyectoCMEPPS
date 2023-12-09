@@ -3,7 +3,7 @@
 
 <div class="container">
  <div>
-  <a type="button" class="btn btn-primary btn-md" href="/addTarea">Añadir tarea</a>
+  <a type="button" class="btn btn-primary btn-md" href="/addTarea">Aï¿½adir tarea</a>
  </div>
  <br>
  <div class="panel panel-primary">
@@ -15,7 +15,7 @@
     <thead>
      <tr>
      <th width="20%">Nombre</th>
-     <th width="30%">Descripción</th>
+     <th width="30%">Descripciï¿½n</th>
      <th width="10%">Tiempo Estimado</th>
      <th width="10%">Prioridad</th>      
       <th width="30%"></th>
@@ -29,7 +29,7 @@
             <td width="10%">${task.tiempoEstimado}</td>
             <td width="10%">${task.prioridad}</td>
             <td width="30%">
-                <a type="button" class="btn btn-success" href="/update-todo?id=${task.id}">Editar</a>
+                <a type="button" class="btn btn-success" href="/actualizar?id=${task.id}">Editar</a>
                 <a type="button" class="btn btn-warning" href="/delete-todo?id=${task.id}">Borrar</a>
             </td>
         </tr>

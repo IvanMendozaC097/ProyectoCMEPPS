@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,6 +47,31 @@ public class TaskController {
         List<Task> tasks = taskService.listarCompletadas(idUser);
         model.put("tasks", tasks);
         return "list-completadas";
+    }
+    
+    @GetMapping(value = "/actualizar")
+    public String showUpdateTodoPage(@RequestParam Long id, ModelMap model) {
+        Task tarea = taskService.getTask(id);
+        taskService.borrar(id);
+        model.put("tarea", tarea);
+        return "editar-tarea";
+    }
+
+    @PostMapping(value = "/actualizar")
+    public String updateTodo(ModelMap model, @Validated Task tarea, BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "editar-tarea";
+        }
+        taskService.ActualizarTarea(tarea);
+        //taskService.guardarTarea(tarea.getNombre(), tarea.getDescripcion(), tarea.getTiempoEstimado(), tarea.getPrioridad(), tarea.getId(),tarea.getCompletada());
+        return "redirect:/list-todos";
+    }
+    
+    @GetMapping(value = "/delete-todo")
+    public String deleteTodo(@RequestParam long id) {
+        taskService.borrar(id);
+        return "redirect:/list-todos";
     }
     
     

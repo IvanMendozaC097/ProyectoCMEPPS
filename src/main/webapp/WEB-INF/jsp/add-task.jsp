@@ -5,7 +5,7 @@
 	<br>
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h3>Añadir Tarea</h3>
+			<h3>Aï¿½adir Tarea</h3>
 		</div>
 		<div class="panel-body">
 			<form method="post" action="/add-task">
@@ -14,7 +14,7 @@
 					<input type="text" class="form-control"	id="nombre" name="nombre" required>
 				</div>
 				<div class="form-group">
-					<label for="descripcion">Descripción:</label> 
+					<label for="descripcion">Descripciï¿½n:</label> 
 					<input type="text" class="form-control" id="descripcion" name="descripcion" required>
 				</div>
 				<div class="form-group">

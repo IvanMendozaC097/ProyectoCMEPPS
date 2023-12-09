@@ -1,6 +1,7 @@
 package com.CMEPPS.proyectotareas.db_driven_adapter.jparepository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,5 +21,8 @@ public interface HAAJpaRepository extends JpaRepository<TaskEntity, Long> {
 	
 	@Query("SELECT t FROM TaskEntity t WHERE t.idUser = idUser")
     List<TaskEntity> findByUser(@Param("idUser") Long idUser);
+	
+	@Query("SELECT t FROM TaskEntity t WHERE t.id = :id")
+    Optional<TaskEntity> findById(@Param("id") Long id);
 	
 }

@@ -16,44 +16,47 @@ import com.CMEPPS.proyectotareas.db_driven_adapter.domain.TaskEntity;
 import com.CMEPPS.proyectotareas.db_driven_adapter.jparepository.HAAJpaRepository;
 
 @Component
-public class JpaTaskRepository implements TaskRepository{
+public class JpaTaskRepository implements TaskRepository {
 	@Autowired
 	private HAAJpaRepository haaJpaRepository;
-	
+
 	@Override
 	public Task findById(Long id) {
 		Optional<TaskEntity> taskEntityOptional = haaJpaRepository.findById(id);
-		Entity taskEntity = (Entity) taskEntityOptional.orElseThrow(TaskDoesNotExistException::new);
-		return  ((TaskEntity) taskEntity).toTask();
+		TaskEntity taskEntity = taskEntityOptional.orElseThrow(TaskDoesNotExistException::new);
+		return ((TaskEntity) taskEntity).toTask();
 	}
 
 	@Override
 	public List<Task> obtenerTodas(Long idUser) {
-	    List<TaskEntity> taskEntities = haaJpaRepository.findByUser(idUser);
-	    return taskEntities.stream()
-	            .map(TaskEntity::toTask)
-	            .collect(Collectors.toList());
+		List<TaskEntity> taskEntities = haaJpaRepository.findByUser(idUser);
+		return taskEntities.stream().map(TaskEntity::toTask).collect(Collectors.toList());
 	}
 
 	@Override
-    public List<Task> obtenerCompletadas(Long idUser) {
-        List<TaskEntity> completadasEntities = haaJpaRepository.findByCompletada(idUser);
-        return completadasEntities.stream()
-                .map(TaskEntity::toTask)
-                .collect(Collectors.toList());
-    }
-	
+	public List<Task> obtenerCompletadas(Long idUser) {
+		List<TaskEntity> completadasEntities = haaJpaRepository.findByCompletada(idUser);
+		return completadasEntities.stream().map(TaskEntity::toTask).collect(Collectors.toList());
+	}
+
 	@Override
 	public Long obtenerSiguienteCodigo() {
-	    Long maxId = haaJpaRepository.getMaxId(); 
-	    return maxId != null ? maxId + 1 : 1L; // Si no hay registros, devuelve 1 como el primer código
+		Long maxId = haaJpaRepository.getMaxId();
+		return maxId != null ? maxId + 1 : 1L; // Si no hay registros, devuelve 1 como el primer código
 	}
 
 	@Override
 	public void guardar(Task task) {
-		 TaskEntity taskEntity = new TaskEntity(task);
-		 haaJpaRepository.save(taskEntity);
-		
+		TaskEntity taskEntity = new TaskEntity(task);
+		haaJpaRepository.save(taskEntity);
+
+	}
+
+	@Override
+	public void borrar(Long id) {
+		Optional<TaskEntity> taskEntity = haaJpaRepository.findById(id);
+		haaJpaRepository.delete(taskEntity.get());
+
 	}
 
 }

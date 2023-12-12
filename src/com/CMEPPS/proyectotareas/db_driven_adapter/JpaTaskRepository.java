@@ -51,12 +51,28 @@ public class JpaTaskRepository implements TaskRepository {
 		haaJpaRepository.save(taskEntity);
 
 	}
-
+	
 	@Override
 	public void borrar(Long id) {
 		Optional<TaskEntity> taskEntity = haaJpaRepository.findById(id);
 		haaJpaRepository.delete(taskEntity.get());
 
 	}
+
+	@Override
+	public void actualizar(Task task) {
+		TaskEntity taskEntity = new TaskEntity(task);
+		
+		taskEntity.setDescripcion(task.getDescripcion());
+		taskEntity.setNombre(task.getNombre());
+		taskEntity.setPrioridad(task.getPrioridad());
+		taskEntity.setTiempoEstimado(task.getTiempoEstimado());
+		taskEntity.setCompletada(task.getCompletada());
+		
+		haaJpaRepository.save(taskEntity);
+		
+	}
+
+
 
 }

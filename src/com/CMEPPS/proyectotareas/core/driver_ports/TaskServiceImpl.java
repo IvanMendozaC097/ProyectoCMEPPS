@@ -45,14 +45,16 @@ public class TaskServiceImpl implements TaskService {
 	}
 
 	@Override
-	public void ActualizarTarea(Task tarea) {
-		this.taskRepository.guardar(tarea);
-
-	}
-
-	@Override
 	public void borrar(Long id) {
 		taskRepository.borrar(id);
 	}
 
+	
+	@Override
+	public void actualizarTask(Task task) {
+		//Long idTask = taskRepository.obtenerSiguienteCodigo();
+
+		this.taskRepository.actualizar(task);
+
+	}
 }

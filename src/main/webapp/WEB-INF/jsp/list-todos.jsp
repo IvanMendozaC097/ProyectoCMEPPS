@@ -30,7 +30,8 @@
             <td width="10%">${task.prioridad}</td>
             <td width="30%">
                 <a type="button" class="btn btn-success" href="/actualizar?id=${task.id}">Editar</a>
-                <a type="button" class="btn btn-warning" href="/delete-todo?id=${task.id}">Borrar</a>
+                <a type="button" class="btn btn-danger" href="/delete-task?id=${task.id}">Borrar</a>
+                <a type="button" class="btn btn-warning" href="/complete-task?id=${task.id}">Completar</a>
             </td>
         </tr>
     </c:forEach>

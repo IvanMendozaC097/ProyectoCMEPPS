@@ -13,6 +13,8 @@ public interface TaskRepository {
 	public Long obtenerSiguienteCodigo();
 
 	public void guardar(Task task);
+	
+	public void actualizar(Task task);
 
 	public void borrar(Long id);
 

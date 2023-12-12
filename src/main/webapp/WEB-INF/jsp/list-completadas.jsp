@@ -13,9 +13,8 @@
                             <tr>
                                 <th width="20%">Nombre</th>
                                 <th width="30%">Descripcion</th>
-                                <th width="10%">Prioridad</th>
-                                <th width="10%">Completada</th>
-                                <th width="30%"></th>
+                                <th width="30%">Prioridad</th>
+                                <th width="20%">Completada</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -23,8 +22,8 @@
                                 <tr>
                                     <td width="20%">${task.nombre}</td>
                                     <td width="30%">${task.descripcion}</td>
-                                    <td width="10%">${task.prioridad}</td>
-                                    <td width="10%">${task.completada}</td>
+                                    <td width="30%">${task.prioridad}</td>
+                                    <td width="20%">${task.completada}</td>
                                 </tr>
                             </c:forEach>
                         </tbody>

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -52,25 +54,22 @@ public class TaskController {
     @GetMapping(value = "/actualizar")
     public String showUpdateTodoPage(@RequestParam Long id, ModelMap model) {
         Task tarea = taskService.getTask(id);
-        taskService.borrar(id);
         model.put("tarea", tarea);
+        taskService.borrar(id);
         return "editar-tarea";
     }
 
-    @PostMapping(value = "/actualizar")
-    public String updateTodo(ModelMap model, @Validated Task tarea, BindingResult result) {
-
-        if (result.hasErrors()) {
-            return "editar-tarea";
-        }
-        taskService.ActualizarTarea(tarea);
-        //taskService.guardarTarea(tarea.getNombre(), tarea.getDescripcion(), tarea.getTiempoEstimado(), tarea.getPrioridad(), tarea.getId(),tarea.getCompletada());
+    @GetMapping(value = "/delete-task")
+    public String deleteTask(@RequestParam long id) {
+        taskService.borrar(id);
         return "redirect:/list-todos";
     }
     
-    @GetMapping(value = "/delete-todo")
-    public String deleteTodo(@RequestParam long id) {
-        taskService.borrar(id);
+    @GetMapping(value = "/complete-task")
+    public String completeTask(@RequestParam long id) {
+    	Task tarea = taskService.getTask(id);
+        tarea.setCompletada(true);
+        taskService.actualizarTask(tarea);
         return "redirect:/list-todos";
     }
     
@@ -84,6 +83,16 @@ public class TaskController {
 
         // Redirige a la página de lista de tareas u otra página según tus necesidades
         return "redirect:/list-todos";
+    }
+    
+    private String getLoggedInUserName(ModelMap model) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            return ((UserDetails) principal).getUsername();
+        }
+
+        return principal.toString();
     }
 
     

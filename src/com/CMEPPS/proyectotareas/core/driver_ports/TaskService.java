@@ -15,6 +15,7 @@ public interface TaskService {
 	public List<Task> listarCompletadas(Long idUser);
 
 	public void borrar(Long id);
+	
+	public void actualizarTask(Task task);
 
-	public void ActualizarTarea(Task tarea);
 }

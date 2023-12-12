@@ -15,7 +15,6 @@ public interface HAAJpaRepository extends JpaRepository<TaskEntity, Long> {
 	@Query("SELECT COALESCE(MAX(t.id), 0) FROM TaskEntity t")
 	Long getMaxId();
 
-	
 	@Query("SELECT t FROM TaskEntity t WHERE t.completada = true AND t.idUser = idUser")
     List<TaskEntity> findByCompletada(@Param("idUser") Long idUser);
 	

@@ -44,4 +44,62 @@ public class TaskEntity {
 	public Task toTask(){
 		return new Task(this.id, this.nombre, this.descripcion, this.tiempoEstimado, this.prioridad, this.idUser, this.completada);   
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public float getTiempoEstimado() {
+		return tiempoEstimado;
+	}
+
+	public void setTiempoEstimado(float tiempoEstimado) {
+		this.tiempoEstimado = tiempoEstimado;
+	}
+
+	public int getPrioridad() {
+		return prioridad;
+	}
+
+	public void setPrioridad(int prioridad) {
+		this.prioridad = prioridad;
+	}
+
+	public Long getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
+
+	public boolean isCompletada() {
+		return completada;
+	}
+
+	public void setCompletada(boolean completada) {
+		this.completada = completada;
+	}
+	
+	
 }

@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,7 +53,7 @@ public class TaskController {
     }
     
     @GetMapping(value = "/actualizar")
-    public String showUpdateTodoPage(@RequestParam Long id, ModelMap model) {
+    public String ShowActualizaTarea(@RequestParam Long id, ModelMap model) {
         Task tarea = taskService.getTask(id);
         model.put("tarea", tarea);
         taskService.borrar(id);
@@ -85,6 +86,19 @@ public class TaskController {
         return "redirect:/list-todos";
     }
     
+    @PostMapping("/actualizar")
+    public String actualizarTarea(@ModelAttribute("tarea") Task tarea) {
+            // Validar la tarea o manejar excepciones según sea necesario
+
+            // Obtener la tarea existente
+            Task tareaExistente = new Task(tarea.getId(),tarea.getNombre(), tarea.getDescripcion(), tarea.getTiempoEstimado(), tarea.getPrioridad(), 1L, tarea.getCompletada());
+
+            // Actualizar la tarea existente con los nuevos valores
+            taskService.actualizarTask(tareaExistente);
+
+            // Redirigir a la página de lista de tareas o a otra página según sea necesario
+            return "redirect:/list-todos";
+    }
     private String getLoggedInUserName(ModelMap model) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 

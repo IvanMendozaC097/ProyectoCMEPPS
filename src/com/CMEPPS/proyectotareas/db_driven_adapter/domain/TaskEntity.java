@@ -26,7 +26,7 @@ public class TaskEntity {
 	@Column(name = "idUser")
 	private Long idUser;
 	@Column(name = "completada")
-	private boolean completada;
+	private Boolean completada;
 	
 	public TaskEntity(Task task) {
 		super();

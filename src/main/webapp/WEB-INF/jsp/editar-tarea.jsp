@@ -6,7 +6,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Editar tarea</div>
                 <div class="panel-body">
-                    <form:form method="post" modelAttribute="tarea" action="/add-task">
+                    <form:form method="post" modelAttribute="tarea" action="/actualizar">
                         <form:hidden path="id" />
 
                         <fieldset class="form-group">
@@ -25,6 +25,10 @@
                             <div class="form-group">
                                 <form:label path="prioridad">Prioridad:</form:label>
                                 <form:input path="prioridad" type="number" class="form-control" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <form:label path="completada">Completada:</form:label>
+                                <form:checkbox path="completada" />
                             </div>
                         </fieldset>
 

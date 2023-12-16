@@ -31,6 +31,16 @@ public class TaskController {
         return "add-task";
     }
     
+    @GetMapping("/seleccion-semana")
+    public String showSeleccionTareas() {
+        return "seleccion-semana";
+    }
+    
+    @PostMapping("/seleccion-semana")
+    public String SemanaSeleccionada(@RequestParam int semana,@RequestParam int mes, @RequestParam int año) {
+        return "seleccion-semana";
+    }
+    
     @GetMapping("/")
     public String showWelcomePage(ModelMap model) {
         return "welcome";

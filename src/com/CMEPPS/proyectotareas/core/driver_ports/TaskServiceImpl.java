@@ -23,10 +23,10 @@ public class TaskServiceImpl implements TaskService {
 
 	@Override
 	public Long guardarTarea(String nombre, String descripcion, float tiempoEstimado, int prioridad, Long idUser,
-			boolean completada) {
+			boolean completada, int semana, int mes, int año) {
 		Long idTask = taskRepository.obtenerSiguienteCodigo();
 
-		Task task = new Task(idTask, nombre, descripcion, tiempoEstimado, prioridad, idUser, completada);
+		Task task = new Task(idTask, nombre, descripcion, tiempoEstimado, prioridad, idUser, completada,semana,mes,año);
 
 		this.taskRepository.guardar(task);
 

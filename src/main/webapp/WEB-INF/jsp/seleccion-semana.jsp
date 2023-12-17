@@ -11,23 +11,24 @@
                         <div class="form-group">
                             <label for="semana">Semana:</label>
                             <select class="form-control" id="semana" name="semana" required>
-                              <c:forEach var="i" begin="1" end="4">
-                                  <option value="${i}">${i}</option>
-                              </c:forEach>
-                            </select>                        </div>
-                        <div class="form-group">
-                            <label for="mes">Mes:</label>
-                            <select class="form-control" id="mes" name="mes" required>
-                              <c:forEach var="i" begin="1" end="12">
-                                  <option value="${i}">${i}</option>
-                              </c:forEach>
+                                <c:forEach var="i" begin="1" end="4">
+                                    <option value="${i}">${i}</option>
+                                </c:forEach>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="año">Año:</label>
-                            <input type="number" class="form-control" id="año" name="año" required>
+                            <label for="mes">Mes:</label>
+                            <select class="form-control" id="mes" name="mes" required>
+                                <c:forEach var="i" begin="1" end="12">
+                                    <option value="${i}">${i}</option>
+                                </c:forEach>
+                            </select>
                         </div>
-                        <button class="btn btn-primary" type="submit">Seleccionar semana</button>
+                        <div class="form-group">
+                            <label for="anio">Año (>=2023):</label>
+                            <input type="number" class="form-control" id="anio" name="anio" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Seleccionar Semana</button>
                     </form>
                 </div>
             </div>
@@ -35,5 +36,8 @@
     </div>
 </div>
 <%@ include file="common/footer.jspf"%>
+
+
+
 
 

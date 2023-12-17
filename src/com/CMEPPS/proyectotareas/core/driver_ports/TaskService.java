@@ -6,7 +6,7 @@ import com.CMEPPS.proyectotareas.core.domain.Task;
 
 public interface TaskService {
 	public Long guardarTarea(String nombre, String descripcion, float tiempoEstimado, int prioridad, Long idUser,
-			boolean completada);
+			boolean completada,int semana, int mes, int año);
 
 	public Task getTask(Long id);
 

@@ -8,6 +8,9 @@
                 <div class="panel-body">
                     <form:form method="post" modelAttribute="tarea" action="/actualizar">
                         <form:hidden path="id" />
+                        <form:hidden path="semana" />
+                        <form:hidden path="mes" />
+                        <form:hidden path="anio" />
 
                         <fieldset class="form-group">
                             <div class="form-group">

@@ -68,6 +68,9 @@ public class JpaTaskRepository implements TaskRepository {
 		taskEntity.setPrioridad(task.getPrioridad());
 		taskEntity.setTiempoEstimado(task.getTiempoEstimado());
 		taskEntity.setCompletada(task.getCompletada());
+		taskEntity.setSemana(task.getSemana());
+		taskEntity.setMes(task.getMes());
+		taskEntity.setAnio(task.getAnio());
 		
 		haaJpaRepository.save(taskEntity);
 		

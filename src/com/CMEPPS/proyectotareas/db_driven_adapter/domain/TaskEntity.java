@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import com.CMEPPS.proyectotareas.core.domain.Task;
 import com.CMEPPS.proyectotareas.core.domain.User;
 
-
 @Entity
 public class TaskEntity {
 	@Id
@@ -27,7 +26,13 @@ public class TaskEntity {
 	private Long idUser;
 	@Column(name = "completada")
 	private Boolean completada;
-	
+	@Column(name = "semana")
+	private int semana;
+	@Column(name = "mes")
+	private int mes;
+	@Column(name = "anio")
+	private int anio;
+
 	public TaskEntity(Task task) {
 		super();
 		this.id = task.getId();
@@ -37,12 +42,17 @@ public class TaskEntity {
 		this.prioridad = task.getPrioridad();
 		this.idUser = task.getUser();
 		this.completada = task.getCompletada();
+		this.semana = task.getSemana();
+		this.mes = task.getMes();
+		this.anio = task.getAnio();
 	}
-	
-	public TaskEntity() {}
 
-	public Task toTask(){
-		return new Task(this.id, this.nombre, this.descripcion, this.tiempoEstimado, this.prioridad, this.idUser, this.completada);   
+	public TaskEntity() {
+	}
+
+	public Task toTask() {
+		return new Task(this.id, this.nombre, this.descripcion, this.tiempoEstimado, this.prioridad, this.idUser,
+				this.completada, this.semana, this.mes, this.anio);
 	}
 
 	public Long getId() {
@@ -100,6 +110,31 @@ public class TaskEntity {
 	public void setCompletada(boolean completada) {
 		this.completada = completada;
 	}
+
+	public int getSemana() {
+		return semana;
+	}
+
+	public void setSemana(int semana) {
+		this.semana = semana;
+	}
+
+	public int getMes() {
+		return mes;
+	}
+
+	public void setMes(int mes) {
+		this.mes = mes;
+	}
+
+	public int getnio() {
+		return anio;
+	}
+
+	public void setAnio(int anio) {
+		this.anio = anio;
+	}
 	
 	
+
 }

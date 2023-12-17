@@ -8,9 +8,14 @@ public class Task {
 	private int prioridad;
 	private Long idUser;
 	private Boolean completada;
+	private Integer semana;
+	private Integer mes;
+	private Integer anio;
 	
-	
-	public Task(Long id, String nombre, String descripcion, float tiempoEstimado, int prioridad, Long idUser, Boolean completada) {
+
+	public Task(Long id, String nombre, String descripcion, float tiempoEstimado, int prioridad, Long idUser,
+			Boolean completada, int semana, int mes, int anio) {
+		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -18,7 +23,12 @@ public class Task {
 		this.prioridad = prioridad;
 		this.idUser = idUser;
 		this.completada = completada;
+		this.semana = semana;
+		this.mes = mes;
+		this.anio = anio;
 	}
+
+
 
 	public Boolean getCompletada() {
 		return completada;
@@ -75,6 +85,32 @@ public class Task {
 	public void setUser(Long idUser) {
 		this.idUser = idUser;
 	}
+
+	public Integer getSemana() {
+		return semana;
+	}
+
+	public void setSemana(Integer semana) {
+		this.semana = semana;
+	}
+
+	public Integer getMes() {
+		return mes;
+	}
+
+	public void setMes(Integer mes) {
+		this.mes = mes;
+	}
+
+	public Integer getAnio() {
+		return anio;
+	}
+
+	public void setAnio(Integer anio) {
+		this.anio = anio;
+	}
+	
+	
 	
 	
 	

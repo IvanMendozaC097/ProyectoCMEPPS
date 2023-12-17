@@ -8,6 +8,7 @@
           <li><a href="/list-todos">Tareas</a></li>
           <li><a href="/list-completadas">Historial de Tareas</a></li>
           <li><a href="/seleccion-semana">Planificar Tareas</a></li>
+          <li><a href="/list-user">Panel Usuario</a></li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
          <li><a href="/logout">Cerrar sesion</a></li>

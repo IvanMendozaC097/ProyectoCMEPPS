@@ -23,8 +23,11 @@
                                 <tr>
                                     <td width="20%">${task.nombre}</td>
                                     <td width="30%">${task.descripcion}</td>
-                                    <td width="30%">${task.prioridad}</td>
-                                    <td width="20%">${task.completada}</td>
+                                    <td width="20%">${task.prioridad}</td>
+                                    <td width="10%">${task.completada}</td>
+                                    <td width="20%">
+                                       <a type="button" class="btn btn-danger" href="/cancela-completado?id=${task.id}">No Completada</a>
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </tbody>

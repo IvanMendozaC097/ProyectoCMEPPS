@@ -12,6 +12,7 @@
                         <form:hidden path="semana" />
                         <form:hidden path="mes" />
                         <form:hidden path="anio" />
+                        <form:hidden path="completada" />
 
                         <fieldset class="form-group">
                             <div class="form-group">
@@ -29,10 +30,6 @@
                             <div class="form-group">
                                 <form:label path="prioridad">Prioridad:</form:label>
                                 <form:input path="prioridad" type="number" class="form-control" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <form:label path="completada">Completada:</form:label>
-                                <form:checkbox path="completada" />
                             </div>
                         </fieldset>
 

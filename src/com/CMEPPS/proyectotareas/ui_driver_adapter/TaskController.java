@@ -124,6 +124,14 @@ public class TaskController {
 		return "redirect:/list-todos";
 	}
 	
+	@GetMapping(value = "/cancela-completado")
+	public String CancelcompleteTask(@RequestParam long id) {
+		Task tarea = taskService.getTask(id);
+		tarea.setCompletada(false);
+		taskService.actualizarTask(tarea);
+		return "redirect:/list-completadas";
+	}
+	
 	@GetMapping(value = "/planificar-task")
 	public String PlanificarTask(@RequestParam long id, @RequestParam int semana, @RequestParam int mes, @RequestParam int anio) {
 		Task tarea = taskService.getTask(id);

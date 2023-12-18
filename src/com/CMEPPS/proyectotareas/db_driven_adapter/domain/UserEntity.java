@@ -31,6 +31,10 @@ public class UserEntity {
 		this.nombre = u.getNombre();
 	}
 
+	public UserEntity()
+	{
+		
+	}
 	public User toUser() {
 		return new User(this.id, this.email, this.password, this.disponibilidad, this.nombre);
 	}

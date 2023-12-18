@@ -20,27 +20,33 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void actualizarUser(User user) {
-		this.userRepository.actualizar(user);
-	}
-
-	@Override
-	public void borrar(Long id) {
-		userRepository.borrar(id);
-	}
-
-	@Override
-	public List<User> listarUsuario(Long id) {
-		List<User> usuario = this.userRepository.obtenerUsuario(id);
-		return usuario;
-	}
-
-	@Override
 	public Long guardarUsuario(String email, String password, int disponibilidad, String nombre) {
 		Long id = (long) 1;
 		User user = new User(id, email, password, disponibilidad,nombre);
 		this.userRepository.guardar(user);
 		return id;
 	}
+	
+	@Override
+	public List<User> listarUsuario(Long id) {
+		List<User> usuario = this.userRepository.obtenerUsuario(id);
+		return usuario;
+	}
+	
+	@Override
+	public void borrar(Long id) {
+		userRepository.borrar(id);
+	}
+	
+	@Override
+	public void actualizarUser(User user) {
+		this.userRepository.actualizar(user);
+	}
+
+	
+
+	
+
+	
 
 }

@@ -27,6 +27,25 @@ public class JpaUserRepository implements UserRepository{
 	}
 
 	@Override
+	public List<User> obtenerUsuario(Long id) {
+		List<UserEntity> userEntity = haaJpaUserRepository.findUserById(id);
+		return userEntity.stream().map(UserEntity::toUser).collect(Collectors.toList());
+	}
+	
+	@Override
+	public void guardar(User user) {
+		UserEntity userEntity = new UserEntity(user);
+		haaJpaUserRepository.save(userEntity);
+	}
+	
+	@Override
+	public void borrar(Long id) {
+		Optional<UserEntity> userEntity = haaJpaUserRepository.findById(id);
+		haaJpaUserRepository.delete(userEntity.get());
+		
+	}
+	
+	@Override
 	public void actualizar(User user) {
 		UserEntity userEntity = new UserEntity(user);
 		userEntity.setDisponibilidad(user.getDisponibilidad());
@@ -36,23 +55,9 @@ public class JpaUserRepository implements UserRepository{
 		haaJpaUserRepository.save(userEntity);
 	}
 
-	@Override
-	public void guardar(User user) {
-		UserEntity userEntity = new UserEntity(user);
-		haaJpaUserRepository.save(userEntity);
-	}
+	
 
-	@Override
-	public void borrar(Long id) {
-		Optional<UserEntity> userEntity = haaJpaUserRepository.findById(id);
-		haaJpaUserRepository.delete(userEntity.get());
-		
-	}
+	
 
-	@Override
-	public List<User> obtenerUsuario(Long id) {
-		List<UserEntity> userEntity = haaJpaUserRepository.findUserById(id);
-		
-		return userEntity.stream().map(UserEntity::toUser).collect(Collectors.toList());
-	}
+	
 }

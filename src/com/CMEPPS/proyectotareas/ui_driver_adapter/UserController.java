@@ -20,8 +20,8 @@ public class UserController {
 	@GetMapping("list-user")
 	public String showUser(ModelMap model) {
 		Long idUser = (long) 1;
-		List<User> user = userService.listarUsuario(idUser);
-		model.put("user", user);
+		List<User> users= userService.listarUsuario(idUser);
+		model.put("users", users);
 		return "list-user";
 	}
 	@GetMapping(value = "/editar-user")
@@ -29,7 +29,7 @@ public class UserController {
 		User user = userService.getUser(id);
 		model.put("user", user);
 		userService.borrar(id);
-		return "editar-user";
+		return "editar-usuario";
 	}
 	
 	@GetMapping("/actualizar-user")

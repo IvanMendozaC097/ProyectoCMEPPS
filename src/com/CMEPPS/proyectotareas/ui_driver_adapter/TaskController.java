@@ -1,6 +1,7 @@
 package com.CMEPPS.proyectotareas.ui_driver_adapter;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -45,17 +46,40 @@ public class TaskController {
 
 	@GetMapping("/planificar-tareas")
 	public String showPlanificarTareas(ModelMap model, @RequestParam int anio, @RequestParam int mes,
-			@RequestParam int semana) {
-		model.put("anio", anio);
-		model.put("mes", mes);
-		model.put("semana", semana);
+	        @RequestParam int semana) {
 
-		Long idUser = (long) 1;
-		List<Task> tasks = taskService.listarTareas(idUser);
-		model.put("tasks", tasks);
+	    int TiempoMax = 10; // Modificar para elegir el tiempo máximo por semana
+	    List<Task> tareasSemana = taskService.TareasDeLaSemana(semana, mes, anio);
+	    Task taux;
+	    
+	    // Calcular tiempo restante
+	    for (int i = 0; i < tareasSemana.size(); i++) {
+	        taux = tareasSemana.get(i);
+	        TiempoMax -= taux.getTiempoEstimado();
+	    }
 
-		return "planificar-tareas";
+	    model.put("tmax", TiempoMax);
+	    model.put("anio", anio);
+	    model.put("mes", mes);
+	    model.put("semana", semana);
+
+	    // Filtrar tareas sin planificar
+	    List<Task> tasks = taskService.TareasSinPlanificar();
+	    List<Task> tasksFiltradas = new ArrayList<>();
+
+	    // Seleccionar tareas que no excedan el tiempo máximo restante
+	    for (int i = 0; i < tasks.size(); i++) {
+	        taux = tasks.get(i);
+	        if (taux.getTiempoEstimado() <= TiempoMax) {
+	            tasksFiltradas.add(taux);
+	        }
+	    }
+
+	    model.put("tasks", tasksFiltradas);
+
+	    return "planificar-tareas";
 	}
+
 
 	@GetMapping("/")
 	public String showWelcomePage(ModelMap model) {
@@ -98,6 +122,40 @@ public class TaskController {
 		tarea.setCompletada(true);
 		taskService.actualizarTask(tarea);
 		return "redirect:/list-todos";
+	}
+	
+	@GetMapping(value = "/planificar-task")
+	public String PlanificarTask(@RequestParam long id, @RequestParam int semana, @RequestParam int mes, @RequestParam int anio) {
+		Task tarea = taskService.getTask(id);
+		tarea.setSemana(semana);
+		tarea.setMes(mes);
+		tarea.setAnio(anio);
+		taskService.actualizarTask(tarea);
+		return "redirect:/planificar-tareas?anio=" + anio + "&mes=" + mes + "&semana=" + semana;
+	}
+	
+	@GetMapping(value = "/ver-semana")
+	public String VerSemana(@RequestParam int semana, @RequestParam int mes, @RequestParam int anio, ModelMap model) {
+		model.put("anio", anio);
+		model.put("mes", mes);
+		model.put("semana", semana);
+		
+		System.out.println(semana+"/"+mes+"/"+anio);
+
+		List<Task> tasks = taskService.TareasDeLaSemana(semana,mes,anio);
+		model.put("tasks", tasks);
+		
+		return "ver-semana";
+	}
+	
+	@GetMapping(value = "/cancela-tarea")
+	public String CancelaTarea(@RequestParam long id, @RequestParam int semana, @RequestParam int mes, @RequestParam int anio) {
+		Task tarea = taskService.getTask(id);
+		tarea.setSemana(0);
+		tarea.setMes(0);
+		tarea.setAnio(0);
+		taskService.actualizarTask(tarea);
+		return "redirect:/ver-semana?anio=" + anio + "&mes=" + mes + "&semana=" + semana;
 	}
 
 	@PostMapping("/add-task")

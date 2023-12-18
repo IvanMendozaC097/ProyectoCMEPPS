@@ -17,5 +17,9 @@ public interface TaskRepository {
 	public void actualizar(Task task);
 
 	public void borrar(Long id);
+	
+	public List<Task> obtenerSinPlanificar();
+	
+	public List<Task> obtenerTareasSemana(int semana,int mes,int anio);
 
 }

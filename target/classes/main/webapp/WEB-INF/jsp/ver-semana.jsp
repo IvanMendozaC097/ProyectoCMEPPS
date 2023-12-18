@@ -4,22 +4,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="container">
  <div>
-  <a type="button" class="btn btn-primary btn-md" href="/ver-semana?semana=${semana}&mes=${mes}&anio=${anio}">Tareas de esta semana</a>
+  <a type="button" class="btn btn-primary btn-md" href="/planificar-tareas?semana=${semana}&mes=${mes}&anio=${anio}">Añadir más Tareas</a>
  </div>
  <br>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-primary">
-                <div class="panel-heading">Planificar Semana ${semana} del mes ${mes}/${anio} ----- Tiempo Libre Restante de la semana: ${tmax}</div>
+                <div class="panel-heading">Tareas de la Semana ${semana} del mes ${mes}/${anio}</div>
                 <div class="panel-body">
                    <table class="table table-striped">
                       <thead>
                         <tr>
                           <th width="20%">Nombre</th>
                           <th width="30%">Descripción</th>
-                          <th width="10%">Tiempo Estimado</th>
-                          <th width="10%">Prioridad</th>      
-                          <th width="30%"></th>
+                          <th width="30%">Tiempo Estimado</th>
+                          <th width="20%">Prioridad</th>      
                        </tr>
                      </thead>
                      <tbody>
@@ -30,7 +29,7 @@
                            <td width="10%">${task.tiempoEstimado}</td>
                            <td width="10%">${task.prioridad}</td>
                            <td width="30%">
-                               <a type="button" class="btn btn-success" href="/planificar-task?id=${task.id}&semana=${semana}&mes=${mes}&anio=${anio}">Seleccionar</a>
+                               <a type="button" class="btn btn-danger" href="/cancela-tarea?id=${task.id}&semana=${semana}&mes=${mes}&anio=${anio}">Cancelar</a>
                           </td>
                         </tr>
                       </c:forEach>

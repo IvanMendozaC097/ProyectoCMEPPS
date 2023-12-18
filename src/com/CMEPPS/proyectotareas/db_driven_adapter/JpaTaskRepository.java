@@ -76,6 +76,18 @@ public class JpaTaskRepository implements TaskRepository {
 		
 	}
 
+	@Override
+	public List<Task> obtenerSinPlanificar() {
+		List<TaskEntity> taskEntities = haaJpaRepository.findByNoPlan();
+		return taskEntities.stream().map(TaskEntity::toTask).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<Task> obtenerTareasSemana(int semana, int mes, int anio) {
+		List<TaskEntity> taskEntities = haaJpaRepository.findBysemana(semana,mes,anio);
+		return taskEntities.stream().map(TaskEntity::toTask).collect(Collectors.toList());
+	}
+
 
 
 }

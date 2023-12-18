@@ -57,4 +57,16 @@ public class TaskServiceImpl implements TaskService {
 		this.taskRepository.actualizar(task);
 
 	}
+
+	@Override
+	public List<Task> TareasSinPlanificar() {
+		List<Task> todasTareas = this.taskRepository.obtenerSinPlanificar();
+		return todasTareas;
+	}
+
+	@Override
+	public List<Task> TareasDeLaSemana(int semana, int mes, int anio) {
+		List<Task> todasTareas = this.taskRepository.obtenerTareasSemana(semana,mes,anio);
+		return todasTareas;
+	}
 }

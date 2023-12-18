@@ -17,5 +17,9 @@ public interface TaskService {
 	public void borrar(Long id);
 	
 	public void actualizarTask(Task task);
+	
+	public List<Task> TareasSinPlanificar();
+	
+	public List<Task> TareasDeLaSemana(int semana,int mes,int anio);
 
 }

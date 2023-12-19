@@ -17,7 +17,6 @@ public class TaskServiceImpl implements TaskService {
 
 	@Override
 	public Task getTask(Long id) {
-		// TODO Auto-generated method stub
 		return taskRepository.findById(id);
 	}
 
@@ -52,7 +51,6 @@ public class TaskServiceImpl implements TaskService {
 	
 	@Override
 	public void actualizarTask(Task task) {
-		//Long idTask = taskRepository.obtenerSiguienteCodigo();
 
 		this.taskRepository.actualizar(task);
 

@@ -14,12 +14,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.CMEPPS.proyectotareas.core.domain.Task;
+import com.CMEPPS.proyectotareas.core.domain.User;
 import com.CMEPPS.proyectotareas.core.driver_ports.TaskService;
+import com.CMEPPS.proyectotareas.core.driver_ports.UserService;
 
 @Controller
 public class TaskController {
 	@Autowired
 	private TaskService taskService;
+	@Autowired
+	private UserService userService;
 
 	@GetMapping("/addTarea")
 	public String showFormAddTaskPage(ModelMap model) {
@@ -48,7 +52,8 @@ public class TaskController {
 	public String showPlanificarTareas(ModelMap model, @RequestParam int anio, @RequestParam int mes,
 	        @RequestParam int semana) {
 
-	    int TiempoMax = 10; // Modificar para elegir el tiempo máximo por semana
+		User user = userService.getUser(1L);
+	    int TiempoMax = user.getDisponibilidad(); // Modificar para elegir el tiempo máximo por semana
 	    List<Task> tareasSemana = taskService.TareasDeLaSemana(semana, mes, anio);
 	    Task taux;
 	    
@@ -88,7 +93,7 @@ public class TaskController {
 
 	@GetMapping("/list-todos")
 	public String showTodos(ModelMap model) {
-		Long idUser = (long) 1; // Ajusta esto según tus necesidades
+		Long idUser = (long) 1;
 		List<Task> tasks = taskService.listarTareas(idUser);
 		model.put("tasks", tasks);
 		return "list-todos";
@@ -96,7 +101,7 @@ public class TaskController {
 
 	@GetMapping("/list-completadas")
 	public String showCompletadas(ModelMap model) {
-		Long idUser = (long) 1; // Ajusta esto según tus necesidades
+		Long idUser = (long) 1;
 		List<Task> tasks = taskService.listarCompletadas(idUser);
 		model.put("tasks", tasks);
 		return "list-completadas";
@@ -106,7 +111,6 @@ public class TaskController {
 	public String ShowActualizaTarea(@RequestParam Long id, ModelMap model) {
 		Task tarea = taskService.getTask(id);
 		model.put("tarea", tarea);
-		taskService.borrar(id);
 		return "editar-tarea";
 	}
 
@@ -169,12 +173,9 @@ public class TaskController {
 	@PostMapping("/add-task")
 	public String agregarTarea(@RequestParam String descripcion, @RequestParam String nombre,
 			@RequestParam float tiempoEstimado, @RequestParam int prioridad) {
-		// Puedes agregar otros parámetros según tus necesidades
-
-		// Guarda la tarea en la base de datos
+		
 		taskService.guardarTarea(nombre, descripcion, tiempoEstimado, prioridad, 1L, false, 0, 0, 0);
 
-		// Redirige a la página de lista de tareas u otra página según tus necesidades
 		return "redirect:/list-todos";
 	}
 
@@ -183,10 +184,8 @@ public class TaskController {
 		Task tareaExistente = new Task(tarea.getId(), tarea.getNombre(), tarea.getDescripcion(),
 				tarea.getTiempoEstimado(), tarea.getPrioridad(), 1L, tarea.getCompletada(), tarea.getSemana(),
 				tarea.getMes(), tarea.getAnio());
-		// Actualizar la tarea existente con los nuevos valores
 		taskService.actualizarTask(tareaExistente);
 
-		// Redirigir a la página de lista de tareas o a otra página según sea necesario
 		return "redirect:/list-todos";
 	}
 

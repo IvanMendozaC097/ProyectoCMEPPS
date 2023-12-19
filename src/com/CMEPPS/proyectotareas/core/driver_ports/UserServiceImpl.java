@@ -15,7 +15,6 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public User getUser(Long id) {
-		// TODO Auto-generated method stub
 		return userRepository.findById(id);
 	}
 

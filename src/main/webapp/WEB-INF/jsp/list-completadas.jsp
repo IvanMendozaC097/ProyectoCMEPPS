@@ -4,8 +4,8 @@
 
         <div class="container">
             <br>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
+            <div class="panel panel-primary" style="border-color: cadetblue;">
+                <div class="panel-heading" style="border-color: cadetblue;background-color: cadetblue;">
                     <h3>Historial de Tareas</h3>
                 </div>
                 <div class="panel-body">

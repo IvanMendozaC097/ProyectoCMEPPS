@@ -4,13 +4,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="container">
  <div>
-  <a type="button" class="btn btn-primary btn-md" href="/ver-semana?semana=${semana}&mes=${mes}&anio=${anio}">Tareas de esta semana</a>
+  <a type="button" class="btn btn-primary btn-md" href="/ver-semana?semana=${semana}&mes=${mes}&anio=${anio}" style="background-color: cadetblue;color: white;font-weight: 300;border-radius: 20px;border-color: cadetblue">Tareas de esta semana</a>
  </div>
  <br>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Planificar Semana ${semana} del mes ${mes}/${anio} ----- Tiempo Libre Restante de la semana: ${tmax}</div>
+            <div class="panel panel-primary" style="border-color: cadetblue;">
+                <div class="panel-heading" style="border-color: cadetblue;background-color: cadetblue;">Planificar Semana ${semana} del mes ${mes}/${anio} ----- Tiempo Libre Restante de la semana: ${tmax}</div>
                 <div class="panel-body">
                    <table class="table table-striped">
                       <thead>

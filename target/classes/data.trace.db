@@ -4738,3 +4738,7 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/car
 	at org.h2.mvstore.FileStore.open(FileStore.java:172)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:390)
 	... 63 more
+2023-12-19 16:01:40 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "USER_ENTITY[*]"; se esperaba "UPDATE, USE"
+Syntax error in SQL statement "USER_ENTITY[*]"; expected "UPDATE, USE"; SQL statement:
+USER_ENTITY [42001-199]

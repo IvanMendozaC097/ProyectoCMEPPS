@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Editar tarea</div>
+            <div class="panel panel-primary" style="border-color: cadetblue;">
+                <div class="panel-heading" style="border-color: cadetblue;background-color: cadetblue;">Editar tarea</div>
                 <div class="panel-body">
                     <form:form method="post" modelAttribute="tarea" action="/actualizar">
                         <form:hidden path="id" />
@@ -33,7 +33,7 @@
                             </div>
                         </fieldset>
 
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: cadetblue;color: white;font-weight: 300;border-radius: 20px;border-color: cadetblue">Guardar</button>
                     </form:form>
                 </div>
             </div>

@@ -9,10 +9,10 @@
 </script>
 
 
-<div class="footer">
-	<h1>
-		<a href=""> Proyecto Final de CMEPPS</a>
-	</h1>
+<div class="footer" style="    height: 45px;justify-content: center;display: flex;align-items: center;background-color: cadetblue;color: white;font-weight: 700;">
+	<p>
+		@Copyright Proyecto Tarea CMEPPS
+	</p>
 </div>
 </body>
 </html>

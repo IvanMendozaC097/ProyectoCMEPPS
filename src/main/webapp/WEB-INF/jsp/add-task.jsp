@@ -4,8 +4,8 @@
 
 <div class="container">
 	<br>
-	<div class="panel panel-primary">
-		<div class="panel-heading">
+	<div class="panel panel-primary" style="border-color: cadetblue;">
+		<div class="panel-heading" style="border-color: cadetblue;background-color: cadetblue;">
 			<h3>Añadir Tarea</h3>
 		</div>
 		<div class="panel-body">
@@ -26,7 +26,7 @@
 					<label for="prioridad">Prioridad:</label>
 					<input type="number" class="form-control" id="prioridad" name="prioridad" required> <br />
 				</div>
-				<button class="btn btn-primary" type="submit">Agregar Tarea</button>
+				<button class="btn btn-primary" type="submit" style="background-color: cadetblue;color: white;font-weight: 300;border-radius: 20px;border-color: cadetblue">Agregar Tarea</button>
 			</form>
 
 		</div>
